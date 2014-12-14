@@ -1,3 +1,10 @@
 language: ruby
 rvm:
 - 2.1.5
+deploy:
+  provider: heroku
+  api_key:
+    secure: flDoy9cW9TTn7xAv1++sSLCpu5JKZN6fj3pGeWj/qJg5v0pGn1uvMkg0ZOwFFZh8Fvz8+oSxzycHk9EsJ2Js3dZk4/LY0wNV21JV+o2q36sFUbHLBjUrj0baQ5EkcW3hsvwAPqRHIAw4aeHmcKE2VuWz1JWJbV9eAOgBpZSA3lw=
+  app: mutilator
+  on:
+    repo: pikesley/mutilator
