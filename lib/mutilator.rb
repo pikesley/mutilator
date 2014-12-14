@@ -44,7 +44,11 @@ class Mutilator < Sinatra::Base
       wants.html do
         haml :mutilated, locals: {
           title: params[:text],
-          content: Wordbot::Bot.mutilate(params[:text])
+          content: Wordbot::Bot.mutilate(params[:text]),
+          github: {
+            user:    'pikesley',
+            project: 'mutilator'
+          }
         }
       end
 
