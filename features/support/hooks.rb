@@ -5,3 +5,11 @@ Before '@html' do
     }
   )
 end
+
+Before '@text' do
+  add_headers(
+    {
+      'Accept' => 'text/plain'
+    }
+  )
+end

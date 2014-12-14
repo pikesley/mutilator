@@ -1,13 +1,15 @@
 require 'sinatra'
 require 'rack/conneg'
 require 'wordbot'
+require 'haml'
+require 'kramdown'
 
 class Mutilator < Sinatra::Base
 
   use(Rack::Conneg) do |conneg|
     conneg.set :accept_all_extensions, false
     conneg.set :fallback, :html
-    conneg.provide([:html, :json])
+    conneg.provide([:html, :json, :text])
   end
 
   before do
@@ -16,9 +18,26 @@ class Mutilator < Sinatra::Base
     end
   end
 
+  get '/' do
+    respond_to do |wants|
+      wants.html do
+        haml :index, locals: {
+          title: 'Mutilator'
+        }
+      end
+    end
+  end
+
   get '/:text' do
     respond_to do |wants|
       wants.html do
+        haml :mutilated, locals: {
+          title: params[:text],
+          content: Wordbot::Bot.mutilate(params[:text])
+        }
+      end
+
+      wants.text do
         Wordbot::Bot.mutilate params[:text]
       end
     end

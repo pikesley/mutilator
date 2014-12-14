@@ -7,6 +7,8 @@ gem 'sinatra'
 gem 'sinatra-respond_to'
 gem 'rack-conneg'
 gem 'rake'
+gem 'haml'
+gem 'kramdown'
 
 group :test do
   gem 'capybara-webkit'
