@@ -22,7 +22,11 @@ class Mutilator < Sinatra::Base
     respond_to do |wants|
       wants.html do
         haml :index, locals: {
-          title: 'Mutilator'
+          title: 'Mutilator',
+          github: {
+            user:    'pikesley',
+            project: 'mutilator'
+          }
         }
       end
     end
