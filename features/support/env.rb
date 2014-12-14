@@ -6,7 +6,6 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib/mutilator.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
-require 'cucumber/api_steps'
 require 'rspec'
 
 Capybara.app = Mutilator
