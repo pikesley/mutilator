@@ -13,6 +13,9 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
+    when /this is a longer string/
+      '/this%20is%20a%20longer%20string'
+
     when /a/
       '/a'
 

@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'rack/conneg'
-require 'mutilator'
+require 'wordbot'
 
 class Mutilator < Sinatra::Base
 
@@ -19,7 +19,7 @@ class Mutilator < Sinatra::Base
   get '/:text' do
     respond_to do |wants|
       wants.html do
-        params[:text]
+        Wordbot::Bot.mutilate params[:text]
       end
     end
   end
