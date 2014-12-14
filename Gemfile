@@ -6,6 +6,7 @@ gem 'wordbot'
 gem 'sinatra'
 gem 'sinatra-respond_to'
 gem 'rack-conneg'
+gem 'rake'
 
 group :test do
   gem 'capybara-webkit'
