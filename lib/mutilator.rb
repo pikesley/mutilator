@@ -30,6 +30,13 @@ class Mutilator < Sinatra::Base
 
   get '/:text' do
     respond_to do |wants|
+      wants.json do
+        j = {
+          source: params[:text],
+          mutilated: Wordbot::Bot.mutilate(params[:text])
+        }.to_json
+      end
+
       wants.html do
         haml :mutilated, locals: {
           title: params[:text],

@@ -16,6 +16,12 @@ module NavigationHelpers
     when /this is a longer string/
       '/this%20is%20a%20longer%20string'
 
+    when /this is a considerably longer piece of text/
+      '/this%20is%20a%20considerably%20longer%20piece%20of%20text'
+
+    when /here is a string that is a bit longer/
+      'here%20is%20a%20string%20that%20is%20a%20bit%20longer'
+
     when /a/
       '/a'
 

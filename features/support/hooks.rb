@@ -13,3 +13,11 @@ Before '@text' do
     }
   )
 end
+
+Before '@json' do
+  add_headers(
+    {
+      'Accept' => 'application/json'
+    }
+  )
+end
