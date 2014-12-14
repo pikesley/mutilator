@@ -25,7 +25,8 @@ class Mutilator < Sinatra::Base
           title: 'Mutilator',
           github: {
             user:    'pikesley',
-            project: 'mutilator'
+            project: 'mutilator',
+            ribbon:  'right_gray_6d6d6d'
           }
         }
       end
@@ -47,7 +48,8 @@ class Mutilator < Sinatra::Base
           content: Wordbot::Bot.mutilate(params[:text]),
           github: {
             user:    'pikesley',
-            project: 'mutilator'
+            project: 'mutilator',
+            ribbon:  'right_gray_6d6d6d'
           }
         }
       end
