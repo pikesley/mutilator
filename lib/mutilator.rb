@@ -40,6 +40,9 @@ class Mutilator < Sinatra::Base
           source: params[:text],
           mutilated: Wordbot::Bot.mutilate(params[:text])
         }.to_json
+
+        puts j
+        j
       end
 
       wants.html do
