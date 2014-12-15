@@ -9,6 +9,7 @@ gem 'rack-conneg'
 gem 'rake'
 gem 'haml'
 gem 'kramdown'
+gem 'gyoku'
 
 group :test do
   gem 'capybara-webkit'
@@ -21,4 +22,5 @@ group :test do
   gem 'guard-cucumber'
   gem 'terminal-notifier-guard'
   gem 'coveralls', require: false
+  gem 'cucumber-api-steps', :require => false
 end
