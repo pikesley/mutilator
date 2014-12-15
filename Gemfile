@@ -9,6 +9,7 @@ gem 'rack-conneg'
 gem 'rake'
 gem 'haml'
 gem 'kramdown'
+gem 'activesupport'
 
 group :test do
   gem 'capybara-webkit'
