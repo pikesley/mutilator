@@ -21,3 +21,11 @@ Before '@json' do
     }
   )
 end
+
+Before '@xml' do
+  add_headers(
+    {
+      'Accept' => 'application/xml'
+    }
+  )
+end

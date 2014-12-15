@@ -65,6 +65,8 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    gyoku (1.2.2)
+      builder (>= 2.1.2)
     haml (4.0.6)
       tilt
     highline (1.6.21)
@@ -183,6 +185,7 @@ DEPENDENCIES
   guard
   guard-cucumber
   guard-rspec
+  gyoku
   haml
   kramdown
   rack-conneg

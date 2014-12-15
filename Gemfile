@@ -10,6 +10,8 @@ gem 'rake'
 gem 'haml'
 gem 'kramdown'
 gem 'activesupport'
+gem 'gyoku'
+
 
 group :test do
   gem 'capybara-webkit'

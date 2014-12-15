@@ -3,13 +3,13 @@ require 'rack/conneg'
 require 'wordbot'
 require 'haml'
 require 'kramdown'
+require 'gyoku'
 
 class Mutilator < Sinatra::Base
-
   use(Rack::Conneg) do |conneg|
     conneg.set :accept_all_extensions, false
     conneg.set :fallback, :html
-    conneg.provide([:html, :json, :text])
+    conneg.provide([:html, :json, :xml, :text])
   end
 
   before do
@@ -34,15 +34,29 @@ class Mutilator < Sinatra::Base
   end
 
   get '/:text' do
+    puts response.headers
     respond_to do |wants|
       wants.json do
-        j = {
+        {
           source: params[:text],
           mutilated: Wordbot::Bot.mutilate(params[:text])
         }.to_json
 
         puts j
         j
+      end
+
+      wants.xml do
+        x = '<?xml version="1.0" encoding="UTF-8"?>
+               <mutilation>'
+        x << Gyoku.xml({
+          source: params[:text],
+          mutilated: Wordbot::Bot.mutilate(params[:text])
+        })
+
+        x << '</mutilation>'
+
+        x
       end
 
       wants.html do
@@ -59,6 +73,10 @@ class Mutilator < Sinatra::Base
 
       wants.text do
         Wordbot::Bot.mutilate params[:text]
+      end
+
+      wants.other do
+        error_406
       end
     end
   end
