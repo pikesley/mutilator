@@ -5,6 +5,12 @@ require 'haml'
 require 'kramdown'
 require 'gyoku'
 
+GITHUB = {
+  user:    'pikesley',
+  project: 'mutilator',
+  ribbon:  'right_gray_6d6d6d'
+}
+
 class Mutilator < Sinatra::Base
   use(Rack::Conneg) do |conneg|
     conneg.set :accept_all_extensions, false
@@ -23,11 +29,7 @@ class Mutilator < Sinatra::Base
       wants.html do
         haml :index, locals: {
           title: 'Mutilator',
-          github: {
-            user:    'pikesley',
-            project: 'mutilator',
-            ribbon:  'right_gray_6d6d6d'
-          }
+          github: GITHUB
         }
       end
     end
@@ -36,17 +38,11 @@ class Mutilator < Sinatra::Base
   get '/:text' do
     respond_to do |wants|
       wants.json do
-        {
-          source: params[:text],
-          mutilated: Wordbot::Bot.mutilate(params[:text])
-        }.to_json
+        get_mutilation(params[:text]).to_json
       end
 
       wants.csv do
-        h = {
-          source: params[:text],
-          mutilated: Wordbot::Bot.mutilate(params[:text])
-        }
+        h = get_mutilation(params[:text])
 
         s = h.keys.join(',')
         s << "\n"
@@ -58,10 +54,7 @@ class Mutilator < Sinatra::Base
       wants.xml do
         x = '<?xml version="1.0" encoding="UTF-8"?>
                <mutilation>'
-        x << Gyoku.xml({
-          source: params[:text],
-          mutilated: Wordbot::Bot.mutilate(params[:text])
-        })
+        x << Gyoku.xml(get_mutilation(params[:text]))
 
         x << '</mutilation>'
 
@@ -72,11 +65,7 @@ class Mutilator < Sinatra::Base
         haml :mutilated, locals: {
           title: params[:text],
           content: Wordbot::Bot.mutilate(params[:text]),
-          github: {
-            user:    'pikesley',
-            project: 'mutilator',
-            ribbon:  'right_gray_6d6d6d'
-          }
+          github: GITHUB
         }
       end
 
@@ -93,6 +82,13 @@ class Mutilator < Sinatra::Base
   def error_406
     content_type 'text/plain'
     error 406, "Not Acceptable"
+  end
+
+  def get_mutilation text
+    {
+      source: text,
+      mutilated: Wordbot::Bot.mutilate(text)
+    }
   end
 
   # start the server if ruby file executed directly
