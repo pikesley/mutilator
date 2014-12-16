@@ -4,6 +4,7 @@ require 'wordbot'
 require 'haml'
 require 'kramdown'
 require 'gyoku'
+require 'csv'
 
 GITHUB = {
   user:    'pikesley',
@@ -44,10 +45,10 @@ class Mutilator < Sinatra::Base
     respond_to do |wants|
       wants.csv do
         h = get_mutilation(params[:text])
-        s = h.keys.join(',')
-        s << "\n"
-        #s << h.values.join(',')
-        s << h.values.map { |i| '"%s"' % i}.join(',')
+        s = CSV.generate do |csv|
+          csv << h.keys
+          csv << h.values
+        end
         s
       end
 

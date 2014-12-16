@@ -6,7 +6,7 @@ Feature: Get mutilated CSV
     Then the response should be a text block:
     """
     source,mutilated
-    "a","a"
+    a,a
     """
 
   Scenario: Return longer CSV
