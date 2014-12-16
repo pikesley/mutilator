@@ -5,13 +5,13 @@ Feature: Get mutilated CSV
     Then the response should be a text block:
     """
     source,mutilated
-    a,a
+    "a","a"
     """
 
   Scenario: Return longer CSV
-    When I go to '/this is a considerably longer piece of text'
+    When I go to '/this is a considerably longer, piece of text'
     Then the response should be a text block:
     """
     source,mutilated
-    this is a considerably longer piece of text
+    "this is a considerably longer, piece of text"
     """
