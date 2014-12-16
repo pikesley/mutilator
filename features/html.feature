@@ -1,9 +1,14 @@
-@html
 Feature: Get mutilated HTML
+
+  Background:
+    Given I send and accept HTML
+
   Scenario: Return simple HTML
-    When I go to '/a'
-    Then I should see 'a'
-    
+    When I send a GET request to "/a"
+    Then the response status should be "200"
+    And the XML response should have "//body//div//div//div" with the text "a"
+
   Scenario: Return longer HTML
-    When I go to '/this is a longer string'
-    Then I should see /t..s is a l....r s....g/
+    When I send a GET request to "/this%20is%20a%20longer%20string"
+    Then the response status should be "200"
+    And the XML response should have "//body//div//div//div"

@@ -1,11 +1,3 @@
-Before '@html' do
-  add_headers(
-    {
-      'Accept' => 'text/html'
-    }
-  )
-end
-
 Before '@text' do
   add_headers(
     {
@@ -14,10 +6,10 @@ Before '@text' do
   )
 end
 
-Before '@json' do
+Before '@csv' do
   add_headers(
     {
-      'Accept' => 'application/json'
+      'Accept' => 'text/csv'
     }
   )
 end

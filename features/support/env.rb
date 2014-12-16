@@ -4,6 +4,8 @@ require File.join(File.dirname(__FILE__), '..', '..', 'lib/mutilator.rb')
 
 require 'capybara'
 require 'capybara/cucumber'
+require 'cucumber/api_steps'
+require 'active_support/core_ext/object/blank'
 require 'rspec'
 require 'coveralls'
 Coveralls.wear_merged!
