@@ -15,7 +15,12 @@ class Mutilator < Sinatra::Base
   use(Rack::Conneg) do |conneg|
     conneg.set :accept_all_extensions, false
     conneg.set :fallback, :html
-    conneg.provide([:html, :json, :xml, :text, :csv])
+    conneg.provide :csv,
+                   :html,
+                   :json,
+                   :text,
+                   :xml
+
   end
 
   before do
@@ -37,28 +42,12 @@ class Mutilator < Sinatra::Base
 
   get '/:text' do
     respond_to do |wants|
-      wants.json do
-        get_mutilation(params[:text]).to_json
-      end
-
       wants.csv do
         h = get_mutilation(params[:text])
-
         s = h.keys.join(',')
         s << "\n"
         s << h.values.join(',')
-
         s
-      end
-
-      wants.xml do
-        x = '<?xml version="1.0" encoding="UTF-8"?>
-               <mutilation>'
-        x << Gyoku.xml(get_mutilation(params[:text]))
-
-        x << '</mutilation>'
-
-        x
       end
 
       wants.html do
@@ -69,8 +58,20 @@ class Mutilator < Sinatra::Base
         }
       end
 
+      wants.json do
+        get_mutilation(params[:text]).to_json
+      end
+
       wants.text do
         Wordbot::Bot.mutilate params[:text]
+      end
+
+      wants.xml do
+        x = '<?xml version="1.0" encoding="UTF-8"?>
+               <mutilation>'
+        x << Gyoku.xml(get_mutilation(params[:text]))
+        x << '</mutilation>'
+        x
       end
 
       wants.other do
