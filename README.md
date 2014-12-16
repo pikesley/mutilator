@@ -51,7 +51,7 @@ Content will be returned as plain text thus:
 
 ####`application/xml`
 
-Content will be returned as an XML document thus (this may be completely bogus, I don't full understand how XML works):
+Content will be returned as an XML document thus (this may be completely bogus, what I understand about XML would fit on the back of a fag packet):
 
       <?xml version="1.0" encoding="UTF-8"?>
       <mutilation>
