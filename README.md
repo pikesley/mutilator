@@ -51,7 +51,7 @@ Content will be returned as plain text thus:
 
 ####`application/xml`
 
-Content will be returned as an XML document thus:
+Content will be returned as an XML document thus (this may be completely bogus, I don't full understand how XML works):
 
       <?xml version="1.0" encoding="UTF-8"?>
       <mutilation>
