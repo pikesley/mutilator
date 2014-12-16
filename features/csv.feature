@@ -1,5 +1,6 @@
 @csv
 Feature: Get mutilated CSV
+
   Scenario: Return simple CSV
     When I go to '/a'
     Then the response should be a text block:
