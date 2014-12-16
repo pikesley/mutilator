@@ -28,7 +28,7 @@ Mutilator will respond to the following _Accept_ values with appropriate content
 Content will be returned as comma-separated values thus:
 
     source,mutilated
-    "This sentence is just a test","Tihs secnntee is just a tset"
+    This sentence is just a test,Tihs secnntee is just a tset
 
 ####`text/html`
 
