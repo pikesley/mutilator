@@ -9,7 +9,7 @@ class Mutilator < Sinatra::Base
   use(Rack::Conneg) do |conneg|
     conneg.set :accept_all_extensions, false
     conneg.set :fallback, :html
-    conneg.provide([:html, :json, :xml, :text])
+    conneg.provide([:html, :json, :xml, :text, :csv])
   end
 
   before do
@@ -40,6 +40,19 @@ class Mutilator < Sinatra::Base
           source: params[:text],
           mutilated: Wordbot::Bot.mutilate(params[:text])
         }.to_json
+      end
+
+      wants.csv do
+        h = {
+          source: params[:text],
+          mutilated: Wordbot::Bot.mutilate(params[:text])
+        }
+
+        s = h.keys.join(',')
+        s << "\n"
+        s << h.values.join(',')
+
+        s
       end
 
       wants.xml do
@@ -75,6 +88,11 @@ class Mutilator < Sinatra::Base
         error_406
       end
     end
+  end
+
+  def error_406
+    content_type 'text/plain'
+    error 406, "Not Acceptable"
   end
 
   # start the server if ruby file executed directly
