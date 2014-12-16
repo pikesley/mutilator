@@ -46,7 +46,8 @@ class Mutilator < Sinatra::Base
         h = get_mutilation(params[:text])
         s = h.keys.join(',')
         s << "\n"
-        s << h.values.join(',')
+        #s << h.values.join(',')
+        s << h.values.map { |i| '"%s"' % i}.join(',')
         s
       end
 

@@ -5,5 +5,5 @@ Feature: Get mutilated text
     Then I should see "a"
 
   Scenario: Return longer text
-    When I go to '/this is a considerably longer piece of text'
-    Then I should see /t..s is a c..........y l....r p...e of t..t/
+    When I go to '/this is a considerably longer, piece of text'
+    Then I should see /t..s is a c..........y l....r, p...e of t..t/
