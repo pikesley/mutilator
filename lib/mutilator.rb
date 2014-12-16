@@ -34,16 +34,12 @@ class Mutilator < Sinatra::Base
   end
 
   get '/:text' do
-    puts response.headers
     respond_to do |wants|
       wants.json do
         {
           source: params[:text],
           mutilated: Wordbot::Bot.mutilate(params[:text])
         }.to_json
-
-        puts j
-        j
       end
 
       wants.xml do
