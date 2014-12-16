@@ -24,5 +24,5 @@ group :test do
   gem 'guard-cucumber'
   gem 'terminal-notifier-guard'
   gem 'coveralls', require: false
-  gem 'cucumber-api-steps', require: false
+  gem 'cucumber-api-steps', require: false, github: 'jayzes/cucumber-api-steps'
 end

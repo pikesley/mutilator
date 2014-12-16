@@ -25,5 +25,4 @@ end
 Then /^the JSON response should have a field "(.*?)" with content \/(.*)\/$/ do |field, regex|
   h = JSON.parse(page.body)
   h.has_key? field && h[field].should =~ /#{regex}/
-
 end
