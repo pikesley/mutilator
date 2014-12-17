@@ -69,8 +69,7 @@ class Mutilator < Sinatra::Base
       end
 
       wants.xml do
-        x = '<?xml version="1.0" encoding="UTF-8"?>
-               <mutilation>'
+        x = '<?xml version="1.0" encoding="UTF-8"?><mutilation>'
         x << Gyoku.xml(get_mutilation(params[:text]))
         x << '</mutilation>'
         x
