@@ -5,6 +5,8 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://pikesley.mit-license.org)
 [![Badges](http://img.shields.io/:badges-6/6-ff6799.svg)](https://github.com/badges/badgerbadgerbadger)
 
+[![Github Issues](https://githubbadges.herokuapp.com/pikesley/ultron/issues)](https://githubbadges.herokuapp.com/pikesley/githubbadges)
+
 #Mutilator
 
 ##Astonishingly Pointless Bullshit as a Service
